@@ -20,8 +20,11 @@
                                 </div>
                                 <input type="text" name="title" id="title"
                                     class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                                    placeholder="Job Title">
+                                    placeholder="Job Title" required>
                             </div>
+                            @error('title')
+                                <p class="text-red-600 font-semibold text-xs mt-1 ml-1">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     
@@ -34,8 +37,11 @@
                                 </div>
                                 <input type="text" name="salary" id="salary"
                                     class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                                    placeholder="Job salary">
+                                    placeholder="Job salary" required>
                             </div>
+                            @error('salary')
+                                <p class="text-red-600 font-semibold text-xs mt-1 ml-1">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
