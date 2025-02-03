@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../css/app.css">
     <title>JobHub</title>
 </head>
 <body>
@@ -107,7 +108,7 @@
     <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{$heading}}</h1>
-        <a href="/jobs/create" class="border rounded-md px-3 py-2 text-sm font-medium bg-gray-800 text-white">Create a new job</a>
+        <a href="/jobs/create" class="  border rounded-md px-3 py-2 text-sm font-medium bg-gray-800 text-white">Create a new job</a>
       </div>
     </header>
     <main>
