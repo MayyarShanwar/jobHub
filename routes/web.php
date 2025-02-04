@@ -1,77 +1,35 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
 //viewing the home page
-Route::get('/', function () {
-    return view('home');
-})->name('home');
- 
+Route::view('/', 'home');
+
+Route::controller(JobController::class)->group(function (){
 //viewing the jobs
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->latest()->simplePaginate(6);
-    return view('jobs.index',["jobs" => $jobs]);
-})->name('jobs');
+Route::get('/jobs', 'index');
 
 //viewing the form to create a job
-Route::get('/jobs/create', function () {
-    return view('jobs.create');
-});
+Route::get('/jobs/create',['create']);
 
 //viewing a single job info
-Route::get('/jobs/{id}', function ($id) {
-    $job = job::find($id);
-    return view('jobs.show',['job' => $job]);
-});
+Route::get('/jobs/{job}', ['show']);
 
 //Creating a new job
-Route::post('/jobs',function(){
-    //validate to confirm a correct info
-    request()->validate([
-        'title' => ['required','min:3'],
-        'salary' => 'required ',
-    ]);
-
-    //creating the job
-    Job::create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => 2,
-    ]);
-
-    //return to the jobs page
-    return redirect('/jobs');
-});
+Route::post('/jobs', ['store']);
 
 //viewing the edit job info page
-Route::get('/jobs/{id}/edit', function ($id) {
-    $job = job::find($id);
-    return view('jobs.edit',['job' => $job]);
-});
+Route::get('/jobs/{job}/edit', ['edit']);
 
-Route::patch('/jobs/{id}',function ($id) {
-    request()->validate([
-        'title' => ['required','min:3'],
-        'salary' => 'required ',
-    ]);
+//edit job info
+Route::patch('/jobs/{job}', ['update']);
 
-    $job = Job::findOrFail($id);
-    $job->update([
-        'title' => request('title'),
-        'salary' => request('salary')
-    ]);
-
-    return redirect('jobs/'.$job->id);
-
-});
-
-Route::delete('/jobs/{id}', function($id) {
-    Job::findOrFail($id)->delete();
-    return redirect('/jobs');
+//delete a job
+Route::delete('/jobs/{job}', ['destroy']);
 });
 
 //viewing the contact page
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::view('/contact', 'contact');
+
