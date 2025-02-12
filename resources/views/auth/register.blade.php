@@ -8,8 +8,7 @@
         <div class="flex min-h-full flex-col justify-center my-12 w-1/2 bg-white rounded-3xl shadow-2xl">
             <div class=" py-10 ">
                 <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img class="mx-auto h-10 w-auto"
-                        src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+                    <img class="mx-auto h-20 w-auto" src="{{ asset('logo.png') }}" alt="Your Company">
                     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Create a new account
                     </h2>
                 </div>
@@ -17,31 +16,36 @@
                 <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <div class="flex justify-between gap-4">
                         <div>
-                            <label for="first name" class="mt-2 text-sm/6 font-medium text-gray-900">First
+                            <label for="first_name" class="mt-2 text-sm/6 font-medium text-gray-900">First
                                 name</label>
                             <div class="">
-                                <input type="first name" name="first name" id="first name" autocomplete="first name"
+                                <input type="first_name" name="first_name" id="first_name" autocomplete="first_name"
                                     required
                                     class="w-full rounded-md bg-gray-100 border border-gray-300 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
-                        @error('first name')
-                            <p class="text-red-600 font-semibold text-xs mt-1 ml-1">{{ $message }}</p>
-                        @enderror
+
 
                         <div>
-                            <label for="last name" class="mt-2 text-sm/6 font-medium text-gray-900">Last
+                            <label for="last_name" class="mt-2 text-sm/6 font-medium text-gray-900">Last
                                 name</label>
                             <div class="">
-                                <input type="last name" name="last name" id="last name" autocomplete="last name"
+                                <input type="last_name" name="last_name" id="last_name" autocomplete="last_name"
                                     required
                                     class="w-full rounded-md bg-gray-100 border border-gray-300 px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
-                        @error('last name')
-                            <p class="text-red-600 font-semibold text-xs mt-1 ml-1">{{ $message }}</p>
-                        @enderror
+
                     </div>
+                    <div class="flex justify-between">
+                    @error('first_name')
+                        <p class="text-red-600 font-semibold text-xs mt-1 ml-1">{{ $message }}</p>
+                    @enderror
+                    @error('last_name')
+                        <p class="text-red-600 font-semibold text-xs mt-1 mr-5">{{ $message }}</p>
+                    @enderror
+                    </div>
+
                     <div>
                         <label for="email" class="mt-2 block text-sm/6 font-medium text-gray-900">Email
                             address</label>
@@ -70,11 +74,11 @@
 
                     <div>
 
-                        <label for="password_confirmation" class="mt-2 block text-sm/6 font-medium text-gray-900">Confirm Password</label>
+                        <label for="password_confirmation"
+                            class="mt-2 block text-sm/6 font-medium text-gray-900">Confirm Password</label>
 
                         <div class=" mb-6">
-                            <input type="password_confirmation" name="password_confirmation" id="password_confirmation"
-                                required
+                            <input type="password" name="password_confirmation" id="password_confirmation" required
                                 class="block w-full rounded-md bg-gray-100 px-3 border border-gray-300 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                         </div>
                     </div>
@@ -93,7 +97,7 @@
                     <a href="/login" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in</a>
                 </p>
             </div>
-            
+
         </div>
 
     </form>
