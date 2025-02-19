@@ -28,16 +28,16 @@ Route::get('/jobs/create','create');
 Route::get('/jobs/{job}', 'show');
 
 //Creating a new job
-Route::post('/jobs', 'store');
+Route::post('/jobs', 'store')->middleware('auth');
 
 //viewing the edit job info page
-Route::get('/jobs/{job}/edit', 'edit');
+Route::get('/jobs/{job}/edit', 'edit')->middleware('auth')->can('edit_job','job');
 
 //edit job info
-Route::patch('/jobs/{job}', 'update');
+Route::patch('/jobs/{job}', 'update')->middleware('auth')->can('edit_job','job');
 
 //delete a job
-Route::delete('/jobs/{job}', 'destroy');
+Route::delete('/jobs/{job}', 'destroy')->middleware('auth')->can('edit_job','job');
 });
 
 //viewing the contact page

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -38,7 +41,7 @@ class JobController extends Controller
         Job::create([
             'title' => request('title'),
             'salary' => request('salary'),
-            'employer_id' => 2,
+            'employer_id' => Auth::user()->id,
         ]);
 
         return redirect('/jobs');
@@ -56,7 +59,7 @@ class JobController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Job $job)
-    {
+    {        
         return view('jobs.edit',['job' => $job]);
     }
 
