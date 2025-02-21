@@ -9,7 +9,7 @@
 
         {{-- can checks if you authorized depending on a gate
         in this case the user who is not allowed to edit the job don't need to see the buttons --}}
-        @can('edit_job', $job)
+        @can('edit', $job)
             <a href="/jobs/{{ $job->id }}/edit"
                 class="relative inline-block mt-2 border rounded-md px-3 py-2 text-sm font-medium border-gray-800 bg-gray-50">Edit
                 the

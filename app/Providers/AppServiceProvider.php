@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
         // The gate checks for authorization First the user need to be logged in and by defining it in the function
         // it checks if its logged in
         // the condition after the return checks if this user is the owner of the job
-        Gate::define('edit_job',function(User $user,Job $job) {
-            return $job->employer->user->is($user);
-        });
+        // Gate::define('edit_job',function(User $user,Job $job) {
+        //     return $job->employer->user->is($user);
+        // });
     }
 }
